@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>iSort - The Sort Visualizer </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <link href="styles/SideNavIcon.css" rel="stylesheet">
+    <link href="styles/font.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style1.css">
+    <link rel="stylesheet" type="text/css" href="styles/style2.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <style>
+        .username {
+            font-size: 1em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-top: 15px;
+            margin-left: 40%;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-top: 15px;
+            margin-right: 20px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <div class="sidenav" id="sidenav">
+        <a href="dashboard.html" class="sidenav-title no-remove"><i class="material-icons icon">home</i> Home</a>
+        <div id="sep" class="no-remove"></div>
+        <div class="sidenav-title no-remove"><i class="material-icons icon">sort</i> Sorts</div>
+        <a href="sorts/bubbleSort.html" class="sidenav-element no-remove">Bubble Sort</a>
+        <a href="sorts/selectionSort.html" class="sidenav-element no-remove">Selection Sort</a>
+        <a href="sorts/insertionSort.html" class="sidenav-element no-remove">Insertion Sort</a>
+        <a href="sorts/countingSort.html" class="sidenav-element no-remove">Counting Sort</a>
+
+    </div>
+
+    <div class="topnav">
+        <button class="sidenav-btn topnav-element ripple open" id="sidenav-menu"><i
+                class="material-icons icon">menu</i></button>
+        <a href="/" class="topnav-element">SORTING VISUALIZER</a>
+        <div id="userinfo">
+            <span>Loading...</span>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Main text -->
+    <div id="header">
+        <h1 class="header__title">
+            <center>
+                <center>iSORT </center> The Witty Visualizer
+            </center>
+        </h1>
+    </div>
+
+    <div id="cover">
+
+        <div id="description-box">
+
+            <h2 style="font-family: 'Electrolize', Courier, monospace;">
+                Sorting Algorithms
+            </h2>
+
+            <div class="description-content">
+
+                <p>
+                    In computer science, a <a href="https://brilliant.org/wiki/sorting-algorithms/">Sorting
+                        algorithm</a> is an algorithm
+                    that puts a random set of numbers into an ascending or decending sequence.
+                    A Sorting algorithm that puts the numbers in an ascending sequence is most widely used.
+                </p>
+
+                <p>
+                    Sorting Algoritms are widely used in many other tasks such as searching, merging, Data Parsing, etc.
+                    <br>
+                    For eg:- <u>Binary Search</u> which is a well known searching algorithm that runs in O(logn) time
+                    needs the data to be sorted in
+                    increasing order.
+                </p>
+
+                <p>
+                    There are many different sorting algorithms, each with its own specific unique intuition and
+                    implementation.
+                    They are classified according to two metrics: space complexity and time complexity.<br><br>
+                    Those two kinds of complexity are represented with <a
+                        href="https://www.geeksforgeeks.org/asymptotic-analysis-comparison-sorting-algorithms/">asymptotic
+                        notations</a>,
+                    mainly with the symbols O, <span class="symbol">Θ</span>, <span class="symbol">Ω</span>,
+                    representing
+                    respectively the upper bound, the tight bound, and the lower bound of the algorithm's complexity,
+                    specifying in brackets an expression in terms of
+                    <code><var>n</var></code>, the number of the elements of the data sequence.<br><br>
+                    Most of them fall into following categories:
+                </p>
+
+                <ul>
+                    <li>Logarithmic<br>
+                        The complexity is proportional to the binary logarithm (i.e to the base 2) of
+                        <code><var>n</var></code>.<br>
+                        An example of a logarithmic sorting algorithm is Quick sort, with space and time complexity
+                        O<code>(n × log n)</code>.<br>
+                    </li>
+                    <li>Quadratic<br>
+                        The complexity is proportional to the square of <code><var>n</var></code>.<br>
+                        An example of a quadratic sorting algorithm is Bubble sort, with a time complexity of
+                        O<code>(n<sup>2</sup>)</code>.<br>
+                    </li>
+                    <li>Linear<br>
+                        The complexity approaches to linear time of <code><var>n</var></code>.<br>
+                        An example of linear sorting algorithm is Counting Sort, with time complexity of
+                        O<code>(n+k)</code>.<br>
+                    </li>
+                </ul>
+
+                <p>
+                    Space and time complexity can also be further subdivided into 3 different cases: <a
+                        href="https://www.geeksforgeeks.org/worst-average-and-best-case-analysis-of-algorithms/">
+                        best case, average case and worst case</a>.
+                </p>
+
+                <p>
+                    Some Sorting algorithms are easy to understand while some cause havoc in one's mind. While it's not
+                    easy to learn everything and it’s not a good recommendation
+                    to learn a piece of code, so here we are with a fun way of understanding the sorting algorithms with
+                    visual depiction of prominent ones. So, Let’s get into it....
+                </p>
+
+                <button class="ripple-sort-btn open"
+                    style="font-size: smaller; color: white; width: fit-content; padding: 10px 30px;">Let's Sort
+                    Away!</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+        <div class="credits">
+            Made with love!
+        </div>
+    </footer>
+    <!-- <div class="bg-img"></div>
+    <div class="dashboard-container">
+        <h2>Welcome to your Dashboard</h2>
+        <div id="userinfo">
+            <span>Loading...</span>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div> -->
+    <script>
+        async function getUserInfo() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '/';
+                return;
+            }
+            const res = await fetch('/api/userinfo', {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            if (res.status === 401) {
+                localStorage.removeItem('token');
+                window.location.href = '/';
+            }
+            const data = await res.json();
+            document.getElementById('userinfo').innerHTML = `
+        <div>
+          <div class="username">Welcome Back ${data.username}!</div>
+        </div>
+      `;
+        }
+        async function logout() {
+            // call server to clear HttpOnly cookie; include credentials so cookie is sent
+            try {
+                await fetch('/api/logout', { method: 'POST', credentials: 'include' });
+            } catch (e) {
+                // ignore network errors
+            }
+            localStorage.removeItem('token');
+            // replace current history entry so Back won't return to this dashboard entry
+            window.location.replace('/');
+        }
+        getUserInfo();
+    </script>
+</body>
+
+</html>
