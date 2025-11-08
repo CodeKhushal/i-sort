@@ -46,19 +46,7 @@ document
     const data = await res.json();
     if (data.token) {
       localStorage.setItem("token", data.token);
-      try {
-        const response = await fetch(`${backendUrl}/dashboard.html`);
-        if (response.ok) {
-          window.location.href = `${backendUrl}/dashboard.html`;
-        } else {
-          document.getElementById("message").textContent =
-            "Error accessing dashboard";
-        }
-      } catch (error) {
-        console.error("Navigation error:", error);
-        document.getElementById("message").textContent =
-          "Error accessing dashboard";
-      }
+      window.location.href = "/dashboard.html";
     } else {
       document.getElementById("message").textContent = data.message;
     }
