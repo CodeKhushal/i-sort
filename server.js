@@ -9,6 +9,7 @@ const app = express();
 const cors = require('cors');
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
+const port = process.env.PORT
 
 app.use(cors({
   origin: 'https://isort-v2.vercel.app/', // Replace with your actual Vercel URL
@@ -16,10 +17,10 @@ app.use(cors({
 }));
 
 // MongoDB Setup
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
 const UserSchema = new mongoose.Schema({
   email: String,
   username: String,
@@ -131,4 +132,4 @@ app.use((req, res) => {
 });
 
 // Start server
-app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
