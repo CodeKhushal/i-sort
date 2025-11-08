@@ -1,6 +1,14 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://i-sort.onrender.com" }
+  "routes": [
+    { 
+      "src": "/api/(.*)",
+      "dest": "https://i-sort.onrender.com"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ],
+  "public": true,
   "cleanUrls": true
 }
