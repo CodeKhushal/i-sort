@@ -47,9 +47,9 @@ document
     if (data.token) {
       localStorage.setItem("token", data.token);
       try {
-        const response = await fetch("/dashboard.html");
+        const response = await fetch(`${backendUrl}/dashboard.html`);
         if (response.ok) {
-          window.location.href = "/dashboard.html";
+          window.location.href = `${backendUrl}/dashboard.html`;
         } else {
           document.getElementById("message").textContent =
             "Error accessing dashboard";
