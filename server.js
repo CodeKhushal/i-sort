@@ -12,8 +12,8 @@ const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 const port = process.env.PORT
 
 app.use(cors({
-  origin: 'https://isort-v2.vercel.app/', // Replace with your actual Vercel URL
-  credentials: true // Allow credentials (cookies) to be sent
+  origin: 'https://isort-v2.vercel.app',
+  credentials: true
 }));
 
 // MongoDB Setup
@@ -30,7 +30,7 @@ const User = mongoose.model("User", UserSchema);
 
 app.use(express.json());
 app.use(cookieParser());
-// app.use(express.static('public'));  // Serve static files
+
 // JWT Middleware (moved up so it can protect static file route)
 function auth(req, res, next) {
   const authHeader = req.headers["authorization"];
@@ -77,13 +77,11 @@ app.post("/api/login", async (req, res) => {
     httpOnly: true,
     sameSite: 'lax',
     maxAge: 60 * 60 * 1000, // 1 hour
-    // add secure: true in production with HTTPS
     secure: process.env.NODE_ENV === 'production'
   });
   res.json({ token, message: "Login successful" });
 });
 
-// Secure Page Example
 app.get("/dashboard.html", auth, (req, res) => {
     res.set({
     "Cache-Control": "no-store, no-cache, must-revalidate, private",
