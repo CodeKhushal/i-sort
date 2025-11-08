@@ -6,8 +6,14 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const app = express();
+const cors = require('cors');
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
+
+app.use(cors({
+  origin: 'https://isort-v2.vercel.app/', // Replace with your actual Vercel URL
+  credentials: true // Allow credentials (cookies) to be sent
+}));
 
 // MongoDB Setup
 mongoose.connect(process.env.MONGO_URI, {
